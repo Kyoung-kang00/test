@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserDAO">  
+<!-- xml의 식별이름 : 객체명처럼,  BoardDAO.insertBoard -->
+
+	
+	<!-- DTO 와  DB테이블을 매핑 -->
+	<resultMap id="userResult" type="user">
+			 <!-- DTO클래스의 속성        DB 테이블컬럼명 -->
+		<id property="id"             column="ID" />
+		<result property="password"   column="PASSWORD" />
+		<result property="name"       column="NAME" />
+		<result property="role"       column="ROLE" />
+		
+	</resultMap>
+
+
+    <!-- 등록 -->
+	<select id="insertUser"  parameterType="user">	
+	   <![CDATA[ 
+	   		insert into users values (#{id},#{password},#{name},#{role})
+	    ]]>	    
+	</select>
+	
+	<!-- 전체검색 -->
+	<select id="getUserList"  resultMap="userResult">
+		<![CDATA[ 
+		    select * from users order by id desc
+		 ]]>
+	</select>
+	<!-- 상세검색 -->
+	<select id="getUser"  resultType="user">
+		<![CDATA[ 
+			select * from users where id=#{id} and password=#{password}
+		]]>
+	</select>
+
+	
+</mapper>
