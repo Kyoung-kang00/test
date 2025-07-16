@@ -30,7 +30,7 @@
 	<%@include file="/WEB-INF/views/common/Header.jsp"  %>
 	<h1>게시판 프로그램</h1>
 	<br>
-	
+	<h2>나는 굥강이요</h2>
 	<a href="login.do">로그인</a>    <!-- GET방식 -->
 	<%@include file="/WEB-INF/views/common/Footer.jsp"  %>
 </body>
